@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2026-03-25.dahlia' as any, // Fixed TypeScript mismatch
-});
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
   try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock', {
+      apiVersion: '2026-03-25.dahlia' as any,
+    });
+
     // We expect the Dad's Firebase ID to be sent here
     const { dadId } = await req.json();
 
