@@ -11,9 +11,12 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const db = getFirestore(app);
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
+// Defensive check to prevent Firebase from crashing Next.js' static prerendering build engine
+const app = typeof window !== 'undefined' && !getApps().length && firebaseConfig.apiKey 
+  ? initializeApp(firebaseConfig) 
+  : getApps().length ? getApp() : null as any;
+const db = app ? getFirestore(app) : null as any;
+const auth = app ? getAuth(app) : null as any;
+const googleProvider = app ? new GoogleAuthProvider() : null as any;
 
 export { db, auth, googleProvider };
