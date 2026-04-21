@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Daughter Coach — She's the Hero. You're the Force Behind Her.</title>
+<meta name="description" content="The best dads don't need credit. They show up, do the work, and watch their daughters become everything. Free AI coaching built on 35 years of research.">
+<meta property="og:title" content="She's the Hero. You're the Force Behind Her.">
+<meta property="og:description" content="Free AI coaching for dads. Built on real research. One weekly assignment. Be the Yoda your daughter needs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#06080a;
+  --bg2:#0c0f12;
+  --surface:#111518;
+  --surface2:#181d21;
+  --border:rgba(255,255,255,0.06);
+  --border2:rgba(255,255,255,0.11);
+  --t1:#ede8e0;
+  --t2:#8a8680;
+  --t3:#3d3d3d;
+  --gold:#b8965a;
+  --gold2:#d4a96a;
+  --green:#4a7c5e;
+  --green2:#6aaa84;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'Lora',Georgia,serif;line-height:1.7;overflow-x:hidden}
+
+body::after{
+  content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(184,150,90,0.04),transparent);
+  pointer-events:none;z-index:0
+}
+*{position:relative;z-index:1}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 48px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;
+  background:rgba(6,8,10,0.94);backdrop-filter:blur(16px);z-index:100
+}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--t1);text-decoration:none;letter-spacing:0.02em}
+.nav-logo span{color:var(--gold);font-style:italic}
+.nav-right{display:flex;gap:28px;align-items:center}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color .15s}
+.nav-link:hover{color:var(--t2)}
+.nav-btn{font-family:'DM Mono',monospace;font-size:10px;color:var(--bg);background:var(--gold);border:none;padding:9px 20px;border-radius:3px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:opacity .15s}
+.nav-btn:hover{opacity:.85}
+
+/* HERO */
+.hero{
+  min-height:96vh;display:flex;flex-direction:column;justify-content:center;
+  padding:100px 48px 80px;max-width:960px;margin:0 auto
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);
+  letter-spacing:0.2em;text-transform:uppercase;margin-bottom:32px;
+  display:flex;align-items:center;gap:16px;
+  animation:fadeUp .6s ease both
+}
+.hero-eyebrow::before{content:'';display:inline-block;width:40px;height:1px;background:var(--gold)}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,8vw,100px);
+  font-weight:300;line-height:1.0;letter-spacing:-0.02em;
+  color:var(--t1);margin-bottom:12px;
+  animation:fadeUp .6s .1s ease both
+}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero h1 .line2{display:block;font-size:clamp(28px,4.5vw,54px);color:var(--t2);font-weight:300;margin-top:8px}
+.hero-divider{
+  width:60px;height:1px;background:var(--border2);margin:36px 0;
+  animation:fadeUp .6s .2s ease both
+}
+.hero-sub{
+  font-size:18px;color:var(--t2);line-height:1.85;
+  max-width:560px;margin-bottom:52px;
+  animation:fadeUp .6s .25s ease both
+}
+.hero-sub strong{color:var(--t1);font-weight:400}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;animation:fadeUp .6s .35s ease both}
+.btn-primary{
+  display:inline-block;background:var(--gold);color:var(--bg);
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;padding:16px 36px;
+  border-radius:3px;text-decoration:none;transition:opacity .15s;border:none;cursor:pointer
+}
+.btn-primary:hover{opacity:.85}
+.btn-outline{
+  display:inline-block;color:var(--t2);
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.1em;text-transform:uppercase;padding:16px 28px;
+  border:1px solid var(--border2);border-radius:3px;text-decoration:none;
+  transition:all .15s;cursor:pointer;background:none
+}
+.btn-outline:hover{border-color:var(--t2);color:var(--t1)}
+.hero-stats{
+  display:flex;gap:48px;margin-top:72px;padding-top:44px;
+  border-top:1px solid var(--border);flex-wrap:wrap;
+  animation:fadeUp .6s .45s ease both
+}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--t1);line-height:1;margin-bottom:4px}
+.stat-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.1em;text-transform:uppercase}
+
+/* BRAND STORY — THE YODA SECTION */
+.brand-story{
+  padding:120px 48px;border-top:1px solid var(--border);
+  background:var(--bg2)
+}
+.brand-inner{max-width:960px;margin:0 auto}
+.brand-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:56px}
+
+.yoda-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.yoda-left{}
+.yoda-headline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,5vw,56px);font-weight:300;line-height:1.15;
+  color:var(--t1);margin-bottom:28px
+}
+.yoda-headline em{font-style:italic;color:var(--gold)}
+.yoda-body p{font-size:15px;color:var(--t2);line-height:1.9;margin-bottom:18px}
+.yoda-body p strong{color:var(--t1);font-weight:400}
+.yoda-right{}
+.yoda-traits{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.yoda-trait{
+  padding:22px 28px;border-bottom:1px solid var(--border);
+  transition:background .15s
+}
+.yoda-trait:last-child{border-bottom:none}
+.yoda-trait:hover{background:var(--surface)}
+.trait-word{
+  font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;
+  font-style:italic;color:var(--gold2);margin-bottom:4px
+}
+.trait-desc{font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);letter-spacing:0.06em;line-height:1.6}
+
+/* THE REAL STAKES */
+.stakes{padding:100px 48px;border-top:1px solid var(--border)}
+.stakes-inner{max-width:960px;margin:0 auto}
+.stakes-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,4vw,46px);font-weight:300;font-style:italic;
+  color:var(--t1);line-height:1.4;
+  border-left:2px solid var(--gold);padding-left:36px;margin-bottom:16px
+}
+.stakes-attribution{font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);letter-spacing:0.08em;padding-left:36px;margin-bottom:64px}
+.stakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.stakes-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:28px 24px}
+.stakes-icon{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--gold);font-style:italic;margin-bottom:14px;font-weight:300}
+.stakes-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--t1);margin-bottom:10px;font-weight:400}
+.stakes-text{font-size:13px;color:var(--t2);line-height:1.8}
+
+/* BEST OF THE WEEK */
+.botw{
+  padding:100px 48px;background:var(--bg2);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border)
+}
+.botw-inner{max-width:960px;margin:0 auto}
+.botw-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:16px}
+.botw-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4.5vw,52px);font-weight:300;line-height:1.2
+}
+.botw-sub{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.1em;text-align:right;line-height:1.8;max-width:200px}
+.botw-featured{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:10px;padding:40px;margin-bottom:24px;
+  border-left:3px solid var(--gold)
+}
+.botw-week{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px}
+.botw-story{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.5vw,24px);
+  font-weight:300;font-style:italic;color:var(--t1);line-height:1.65;margin-bottom:24px
+}
+.botw-principle{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:10px;color:var(--green2);
+  background:rgba(74,124,94,0.1);border:1px solid rgba(106,170,132,0.2);
+  border-radius:20px;padding:5px 14px;letter-spacing:0.08em
+}
+.botw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.botw-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:22px}
+.botw-card-week{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px}
+.botw-card-story{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--t2);line-height:1.7;margin-bottom:12px}
+.botw-card-tag{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.08em}
+
+/* PRINCIPLES */
+.principles{padding:100px 48px;border-top:1px solid var(--border)}
+.principles-inner{max-width:960px;margin:0 auto}
+.principles-intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:64px}
+.principles-intro h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,52px);font-weight:300;line-height:1.2}
+.principles-intro p{font-size:15px;color:var(--t2);line-height:1.85;padding-top:8px}
+.principles-intro p strong{color:var(--t1);font-weight:400}
+.p-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.p-item{background:var(--bg);padding:24px 28px;transition:background .15s;cursor:default}
+.p-item:hover{background:var(--surface)}
+.p-num{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.12em;margin-bottom:8px}
+.p-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--t1);line-height:1.4;margin-bottom:6px}
+.p-source{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:0.07em}
+
+/* RESEARCH */
+.research{padding:100px 48px;background:var(--bg2);border-top:1px solid var(--border)}
+.research-inner{max-width:960px;margin:0 auto}
+.research-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:48px}
+.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.r-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:28px 24px}
+.r-initial{
+  font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;
+  font-style:italic;color:var(--gold);line-height:1;margin-bottom:16px
+}
+.r-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--t1);margin-bottom:4px;font-weight:400}
+.r-inst{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.09em;margin-bottom:16px;line-height:1.7}
+.r-finding{font-size:13px;color:var(--t2);line-height:1.8}
+.r-book{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);font-style:italic;margin-top:14px;line-height:1.6;padding-top:14px;border-top:1px solid var(--border)}
+
+/* MANIFESTO */
+.manifesto{
+  padding:120px 48px;border-top:1px solid var(--border);
+  text-align:center
+}
+.manifesto-inner{max-width:720px;margin:0 auto}
+.manifesto-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:40px}
+.manifesto h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4.5vw,54px);font-weight:300;font-style:italic;
+  line-height:1.4;color:var(--t1);margin-bottom:32px
+}
+.manifesto-lines{list-style:none;margin-bottom:48px}
+.manifesto-lines li{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,2.5vw,24px);font-weight:300;
+  color:var(--t2);line-height:2;letter-spacing:0.01em;
+  transition:color .2s
+}
+.manifesto-lines li:hover{color:var(--t1)}
+.manifesto-lines li span{color:var(--gold);font-style:italic}
+.manifesto-cta{font-size:15px;color:var(--t2);line-height:1.8;margin-bottom:40px}
+
+/* FINAL CTA */
+.final-cta{
+  padding:140px 48px;border-top:1px solid var(--border);
+  background:var(--bg2);text-align:center
+}
+.final-inner{max-width:800px;margin:0 auto}
+.final-cta h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,7vw,88px);font-weight:300;
+  line-height:1.05;letter-spacing:-0.02em;color:var(--t1);margin-bottom:24px
+}
+.final-cta h2 em{font-style:italic;color:var(--gold)}
+.final-cta p{font-size:17px;color:var(--t2);max-width:500px;margin:0 auto 48px;line-height:1.85}
+.final-free{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-top:20px}
+
+/* SHARE */
+.share-bar{
+  padding:56px 48px;border-top:1px solid var(--border);
+  background:var(--surface);text-align:center
+}
+.share-bar p{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px}
+.share-bar-sub{font-size:14px;color:var(--t2);margin-bottom:28px;font-style:italic}
+.share-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.share-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);
+  border:1px solid var(--border);border-radius:3px;padding:10px 20px;
+  text-decoration:none;letter-spacing:0.09em;text-transform:uppercase;
+  transition:all .15s;cursor:pointer;background:none
+}
+.share-btn:hover{border-color:var(--t2);color:var(--t1)}
+.share-btn.gold{border-color:rgba(184,150,90,0.3);color:var(--gold)}
+.share-btn.gold:hover{border-color:var(--gold);color:var(--gold2)}
+
+/* FOOTER */
+footer{
+  padding:44px 48px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px
+}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--t1)}
+.footer-logo span{color:var(--gold);font-style:italic}
+.footer-right{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.08em;line-height:1.9;text-align:right}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:720px){
+  nav{padding:16px 20px}
+  .nav-right .nav-link{display:none}
+  .hero,.brand-story,.stakes,.botw,.principles,.research,.manifesto,.final-cta,.share-bar{padding-left:20px;padding-right:20px}
+  footer{padding:32px 20px}
+  .yoda-grid,.stakes-grid,.research-grid,.botw-grid,.principles-intro{grid-template-columns:1fr;gap:32px}
+  .p-grid{grid-template-columns:1fr}
+  .hero-stats{gap:28px}
+  .principles-intro p{padding-top:0}
+  .footer-right{text-align:left}
+  .botw-header p{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">The <span>Daughter</span> Coach</a>
+  <div class="nav-right">
+    <a href="#story" class="nav-link">The story</a>
+    <a href="#botw" class="nav-link">Best of week</a>
+    <a href="#research" class="nav-link">Research</a>
+    <a href="#app" class="nav-btn">Start free →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">For dads who don't need the credit</div>
+  <h1>
+    She's the <em>hero.</em>
+    <span class="line2">You're the force behind her.</span>
+  </h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">
+    The best dads are like Yoda — <strong>strong, silent, shows up, doesn't need credit.</strong> They do the work nobody sees. And one day their daughter walks into her life fully formed, and she knows exactly where that came from.
+  </p>
+  <div class="hero-actions">
+    <a href="#app" class="btn-primary">Start my first session →</a>
+    <a href="#story" class="btn-outline">Read the story</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">35+</div><div class="stat-label">Years of research</div></div>
+    <div><div class="stat-num">3</div><div class="stat-label">World-class researchers</div></div>
+    <div><div class="stat-num">1</div><div class="stat-label">Assignment per week</div></div>
+    <div><div class="stat-num">$0</div><div class="stat-label">Forever free</div></div>
+  </div>
+</section>
+
+<!-- BRAND STORY — YODA -->
+<section class="brand-story" id="story">
+  <div class="brand-inner">
+    <div class="brand-label">The framework</div>
+    <div class="yoda-grid">
+      <div class="yoda-left">
+        <h2 class="yoda-headline reveal">You are <em>not</em> the hero<br>of this story.</h2>
+        <div class="yoda-body">
+          <p>Luke needed Yoda. Not because Yoda had all the answers — but because Yoda <strong>showed up consistently, asked the right questions, and never made it about himself.</strong></p>
+          <p>Your daughter is on a journey. She's figuring out who she is, whether she's worth loving, how to trust people, what she's capable of. She doesn't need you to solve it.</p>
+          <p>She needs you to be the <strong>constant, quiet force</strong> that makes her journey possible. The one who's already there when she turns around. The one who never needed credit for it.</p>
+          <p style="color:var(--t1);font-style:italic">That's the job. That's the whole job.</p>
+        </div>
+      </div>
+      <div class="yoda-right reveal">
+        <div class="yoda-traits">
+          <div class="yoda-trait">
+            <div class="trait-word">Strong.</div>
+            <div class="trait-desc">Emotionally steady when she's not. The rock she pushes off of.</div>
+          </div>
+          <div class="yoda-trait">
+            <div class="trait-word">Silent.</div>
+            <div class="trait-desc">Listens more than he talks. Doesn't fill every silence with advice.</div>
+          </div>
+          <div class="yoda-trait">
+            <div class="trait-word">Shows up.</div>
+            <div class="trait-desc">For the recital he doesn't understand. The game he can't follow. The Tuesday that matters.</div>
+          </div>
+          <div class="yoda-trait">
+            <div class="trait-word">No credit needed.</div>
+            <div class="trait-desc">Does the work in the dark. Doesn't keep score. Doesn't need to be thanked.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE REAL STAKES -->
+<section class="stakes">
+  <div class="stakes-inner">
+    <div class="stakes-quote reveal">
+      "Fathers have measurable, long-term impact on their daughters' romantic relationships, career success, mental health, and self-worth — often more than any other single factor."
+    </div>
+    <div class="stakes-attribution">— Dr. Linda Nielsen, Wake Forest University · 35 years of research on father-daughter relationships</div>
+    <div class="stakes-grid">
+      <div class="stakes-card reveal">
+        <div class="stakes-icon">♡</div>
+        <div class="stakes-title">Who she loves</div>
+        <div class="stakes-text">Nielsen's data is clear: the dad-daughter relationship sets the template for every romantic relationship she'll ever have. You are teaching her what she deserves.</div>
+      </div>
+      <div class="stakes-card reveal">
+        <div class="stakes-icon">◈</div>
+        <div class="stakes-title">How she sees herself</div>
+        <div class="stakes-text">Siegel's neuroscience shows that secure attachment physically builds the prefrontal cortex — the part of the brain responsible for confidence, self-regulation, and resilience.</div>
+      </div>
+      <div class="stakes-card reveal">
+        <div class="stakes-icon">→</div>
+        <div class="stakes-title">What she becomes</div>
+        <div class="stakes-text">Gottman's 40 years of research links emotional coaching from fathers directly to career achievement, emotional intelligence, and the ability to form deep relationships.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEST OF THE WEEK -->
+<section class="botw" id="botw">
+  <div class="botw-inner">
+    <div class="botw-header">
+      <h2 class="botw-title">Best of<br>the Week.</h2>
+      <p class="botw-sub">Real dads.<br>Real moments.<br>Submitted anonymously.</p>
+    </div>
+
+    <div class="botw-featured reveal">
+      <div class="botw-week">↳ This week's story · Week of Apr 5, 2026</div>
+      <div class="botw-story">
+        "She had a bad day at school. I could feel myself starting to troubleshoot — figuring out who was wrong, what the fix was. I remembered the assignment. I just said 'that sounds really hard' and shut up. We sat in the car in the driveway for 22 minutes. She talked the whole time. She got out, said 'thanks Dad,' and went inside. I don't think she even realized what happened. I did."
+      </div>
+      <div class="botw-principle">↳ Principle #8 — Listen without solving · Gottman</div>
+    </div>
+
+    <div class="botw-grid">
+      <div class="botw-card reveal">
+        <div class="botw-card-week">Week of Mar 29</div>
+        <div class="botw-card-story">"Took her to the pottery class she'd been asking about for 6 months. I made something terrible. She laughed so hard she cried. I took a photo."</div>
+        <div class="botw-card-tag">Principle #6 — Show up for what she loves</div>
+      </div>
+      <div class="botw-card reveal">
+        <div class="botw-card-week">Week of Mar 22</div>
+        <div class="botw-card-story">"I told her I was wrong about something I'd been wrong about for 2 years. She got very quiet. Then she said 'I know.' That was it. It was everything."</div>
+        <div class="botw-card-tag">Principle #3 — Let her see you be human</div>
+      </div>
+      <div class="botw-card reveal">
+        <div class="botw-card-week">Week of Mar 15</div>
+        <div class="botw-card-story">"Saturday pancakes. Third week in a row. She brought a friend this time without asking. I think that means something."</div>
+        <div class="botw-card-tag">Principle #4 — Build reliable traditions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE 10 PRINCIPLES -->
+<section class="principles" id="principles">
+  <div class="principles-inner">
+    <div class="principles-intro">
+      <h2 class="reveal">Ten principles.<br><em>All research-backed.</em><br>One at a time.</h2>
+      <p class="reveal">The coach never gives you all ten at once. <strong>One or two at a time, compounding over months.</strong> That's how behavior actually changes. That's what the research says.</p>
+    </div>
+    <div class="p-grid">
+      <div class="p-item reveal"><div class="p-num">#01 · GOTTMAN</div><div class="p-text">No agenda. Just listen.</div><div class="p-source">Emotion coaching — no redirecting</div></div>
+      <div class="p-item reveal"><div class="p-num">#02 · GOTTMAN</div><div class="p-text">Ask about her world, not her performance.</div><div class="p-source">Open-ended questions build deep trust</div></div>
+      <div class="p-item reveal"><div class="p-num">#03 · SIEGEL</div><div class="p-text">Let her see you be human.</div><div class="p-source">Rupture & repair — the repair is everything</div></div>
+      <div class="p-item reveal"><div class="p-num">#04 · NIELSEN</div><div class="p-text">Build traditions she can count on.</div><div class="p-source">Consistency is the #1 father-daughter variable</div></div>
+      <div class="p-item reveal"><div class="p-num">#05 · NIELSEN</div><div class="p-text">"You're beautiful, period."</div><div class="p-source">You set the template for every man after you</div></div>
+      <div class="p-item reveal"><div class="p-num">#06 · GOTTMAN</div><div class="p-text">Show up for what she loves — even when you don't get it.</div><div class="p-source">Turning toward vs. turning away</div></div>
+      <div class="p-item reveal"><div class="p-num">#07 · SIEGEL</div><div class="p-text">Photos on the messy days.</div><div class="p-source">Presence over performance — always</div></div>
+      <div class="p-item reveal"><div class="p-num">#08 · GOTTMAN</div><div class="p-text">Listen without solving.</div><div class="p-source">Validate before you advise — every time</div></div>
+      <div class="p-item reveal"><div class="p-num">#09 · NIELSEN</div><div class="p-text">Speak to who she is, not what she does.</div><div class="p-source">Character naming is armor she carries forever</div></div>
+      <div class="p-item reveal"><div class="p-num">#10 · SIEGEL</div><div class="p-text">Be proud of her heart, not her grades.</div><div class="p-source">The 4 S's — Safe, Seen, Soothed, Secure</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="research" id="research">
+  <div class="research-inner">
+    <div class="research-label">The research team</div>
+    <div class="research-grid">
+      <div class="r-card reveal">
+        <div class="r-initial">N</div>
+        <div class="r-name">Dr. Linda Nielsen</div>
+        <div class="r-inst">Wake Forest University<br>35+ years · Father-Daughter Specialist</div>
+        <div class="r-finding">The foremost researcher in the world specifically studying father-daughter relationships. Her data spans mental health, self-confidence, career success, romantic relationships, and financial outcomes — all tied to the father's consistency and presence.</div>
+        <div class="r-book">Father-Daughter Relationships: Contemporary Research and Issues · 2nd Ed.</div>
+      </div>
+      <div class="r-card reveal">
+        <div class="r-initial">G</div>
+        <div class="r-name">Dr. John Gottman</div>
+        <div class="r-inst">The Gottman Institute<br>40 years · 200+ published papers</div>
+        <div class="r-finding">Gold standard in relationship science. His emotion coaching framework — awareness, validation, guidance — predicts a child's emotional intelligence and resilience across their lifetime. "Turning toward" in small moments determines everything.</div>
+        <div class="r-book">Raising an Emotionally Intelligent Child · The Gottman Institute</div>
+      </div>
+      <div class="r-card reveal">
+        <div class="r-initial">S</div>
+        <div class="r-name">Dr. Dan Siegel</div>
+        <div class="r-inst">UCLA · Mindsight Institute<br>Harvard MD · Attachment Neuroscience</div>
+        <div class="r-finding">His 4 S's — Safe, Seen, Soothed, Secure — define what children need from fathers. Secure attachment physically strengthens the prefrontal cortex. The rupture is inevitable. The repair is what's essential.</div>
+        <div class="r-book">The Power of Showing Up · Mindsight Institute</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="manifesto-inner">
+    <div class="manifesto-label">The dad we're building toward</div>
+    <h2 class="reveal">"The best dads make themselves<br>quietly irreplaceable."</h2>
+    <ul class="manifesto-lines">
+      <li class="reveal">He doesn't need to be the <span>loudest</span> in the room.</li>
+      <li class="reveal">He needs to be the most <span>consistent</span>.</li>
+      <li class="reveal">He doesn't need her to say <span>thank you</span>.</li>
+      <li class="reveal">He needs to <span>show up</span> anyway.</li>
+      <li class="reveal">He doesn't need to fix <span>everything</span>.</li>
+      <li class="reveal">He needs to be there for <span>anything</span>.</li>
+      <li class="reveal">He does the work in the <span>dark.</span></li>
+      <li class="reveal">And one day, in a quiet moment,<br>she'll know <span>exactly</span> where she got it from.</li>
+    </ul>
+    <p class="manifesto-cta reveal">That's the dad this tool is building. One weekly assignment at a time.</p>
+    <a href="#app" class="btn-primary reveal">I want to be that dad →</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="app">
+  <div class="final-inner">
+    <h2>The best time<br>was years ago.<br>This is <em>now.</em></h2>
+    <p>Free. Three minutes to start. Built on real research. Your daughter is worth the three minutes.</p>
+    <a href="daughter-coach.jsx" class="btn-primary">Start my first session →</a>
+    <div class="final-free">Free forever · No account · Built on 35 years of data</div>
+  </div>
+</section>
+
+<!-- SHARE -->
+<section class="share-bar">
+  <p>Send this to a dad who needs it</p>
+  <p class="share-bar-sub">The best marketing for this is a dad texting another dad.</p>
+  <div class="share-btns">
+    <a class="share-btn gold" href="https://twitter.com/intent/tweet?text=She%27s%20the%20hero.%20You%27re%20the%20force%20behind%20her.%0A%0AFree%20AI%20coaching%20for%20dads%20built%20on%2035%20years%20of%20research.%20One%20weekly%20assignment.%20No%20platitudes.%20Just%20moves.%0A%0A%23girldad%20%23daddaughter%20%23fatherdaughter" target="_blank">
+      𝕏 Post on X
+    </a>
+    <a class="share-btn" href="sms:?body=Bro%20-%20you%20need%20to%20see%20this.%20Free%20AI%20coaching%20tool%20for%20dads%20built%20on%20actual%20research.%20One%20weekly%20assignment%20for%20your%20relationship%20with%20your%20daughter.%20It%27s%20free%20and%20it%27s%20real.%20thedaughtercoach.com" target="_blank">
+      ✉ Text a dad
+    </a>
+    <button class="share-btn" onclick="copyLink(this)">⎘ Copy link</button>
+    <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://thedaughtercoach.com" target="_blank">in LinkedIn</a>
+    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://thedaughtercoach.com" target="_blank">⬡ Facebook</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">The <span>Daughter</span> Coach</div>
+  <div class="footer-right">
+    Research: Dr. Linda Nielsen · Wake Forest University<br>
+    Dr. John Gottman · The Gottman Institute<br>
+    Dr. Dan Siegel · UCLA Mindsight Institute<br>
+    <span style="color:#222;margin-top:6px;display:block">Built by a dad who got the question right.</span>
+  </div>
+</footer>
+
+<script>
+function copyLink(btn){
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    const o=btn.textContent;btn.textContent='✓ Copied!';
+    setTimeout(()=>btn.textContent=o,2000)
+  })
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in')}})
+},{threshold:0.08})
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))
+</script>
+</body>
+</html>

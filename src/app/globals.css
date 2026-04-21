@@ -1,26 +1,291 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#06080a;
+  --bg2:#0c0f12;
+  --surface:#111518;
+  --surface2:#181d21;
+  --border:rgba(255,255,255,0.06);
+  --border2:rgba(255,255,255,0.11);
+  --t1:#ede8e0;
+  --t2:#8a8680;
+  --t3:#3d3d3d;
+  --gold:#b8965a;
+  --gold2:#d4a96a;
+  --green:#4a7c5e;
+  --green2:#6aaa84;
 }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'Lora',Georgia,serif;line-height:1.7;overflow-x:hidden}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body::after{
+  content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(184,150,90,0.04),transparent);
+  pointer-events:none;z-index:0
 }
+*{position:relative;z-index:1}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 48px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;
+  background:rgba(6,8,10,0.94);backdrop-filter:blur(16px);z-index:100
 }
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--t1);text-decoration:none;letter-spacing:0.02em}
+.nav-logo span{color:var(--gold);font-style:italic}
+.nav-right{display:flex;gap:28px;align-items:center}
+.nav-link{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color .15s}
+.nav-link:hover{color:var(--t2)}
+.nav-btn{font-family:'DM Mono',monospace;font-size:10px;color:var(--bg);background:var(--gold);border:none;padding:9px 20px;border-radius:3px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:opacity .15s}
+.nav-btn:hover{opacity:.85}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* HERO */
+.hero{
+  min-height:96vh;display:flex;flex-direction:column;justify-content:center;
+  padding:100px 48px 80px;max-width:960px;margin:0 auto
+}
+.hero-eyebrow{
+  font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);
+  letter-spacing:0.2em;text-transform:uppercase;margin-bottom:32px;
+  display:flex;align-items:center;gap:16px;
+  animation:fadeUp .6s ease both
+}
+.hero-eyebrow::before{content:'';display:inline-block;width:40px;height:1px;background:var(--gold)}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,8vw,100px);
+  font-weight:300;line-height:1.0;letter-spacing:-0.02em;
+  color:var(--t1);margin-bottom:12px;
+  animation:fadeUp .6s .1s ease both
+}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero h1 .line2{display:block;font-size:clamp(28px,4.5vw,54px);color:var(--t2);font-weight:300;margin-top:8px}
+.hero-divider{
+  width:60px;height:1px;background:var(--border2);margin:36px 0;
+  animation:fadeUp .6s .2s ease both
+}
+.hero-sub{
+  font-size:18px;color:var(--t2);line-height:1.85;
+  max-width:560px;margin-bottom:52px;
+  animation:fadeUp .6s .25s ease both
+}
+.hero-sub strong{color:var(--t1);font-weight:400}
+.hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;animation:fadeUp .6s .35s ease both}
+.btn-primary{
+  display:inline-block;background:var(--gold);color:var(--bg);
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;padding:16px 36px;
+  border-radius:3px;text-decoration:none;transition:opacity .15s;border:none;cursor:pointer
+}
+.btn-primary:hover{opacity:.85}
+.btn-outline{
+  display:inline-block;color:var(--t2);
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.1em;text-transform:uppercase;padding:16px 28px;
+  border:1px solid var(--border2);border-radius:3px;text-decoration:none;
+  transition:all .15s;cursor:pointer;background:none
+}
+.btn-outline:hover{border-color:var(--t2);color:var(--t1)}
+.hero-stats{
+  display:flex;gap:48px;margin-top:72px;padding-top:44px;
+  border-top:1px solid var(--border);flex-wrap:wrap;
+  animation:fadeUp .6s .45s ease both
+}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--t1);line-height:1;margin-bottom:4px}
+.stat-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.1em;text-transform:uppercase}
+
+/* BRAND STORY — THE YODA SECTION */
+.brand-story{
+  padding:120px 48px;border-top:1px solid var(--border);
+  background:var(--bg2)
+}
+.brand-inner{max-width:960px;margin:0 auto}
+.brand-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:56px}
+
+.yoda-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.yoda-left{}
+.yoda-headline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,5vw,56px);font-weight:300;line-height:1.15;
+  color:var(--t1);margin-bottom:28px
+}
+.yoda-headline em{font-style:italic;color:var(--gold)}
+.yoda-body p{font-size:15px;color:var(--t2);line-height:1.9;margin-bottom:18px}
+.yoda-body p strong{color:var(--t1);font-weight:400}
+.yoda-right{}
+.yoda-traits{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.yoda-trait{
+  padding:22px 28px;border-bottom:1px solid var(--border);
+  transition:background .15s
+}
+.yoda-trait:last-child{border-bottom:none}
+.yoda-trait:hover{background:var(--surface)}
+.trait-word{
+  font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;
+  font-style:italic;color:var(--gold2);margin-bottom:4px
+}
+.trait-desc{font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);letter-spacing:0.06em;line-height:1.6}
+
+/* THE REAL STAKES */
+.stakes{padding:100px 48px;border-top:1px solid var(--border)}
+.stakes-inner{max-width:960px;margin:0 auto}
+.stakes-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,4vw,46px);font-weight:300;font-style:italic;
+  color:var(--t1);line-height:1.4;
+  border-left:2px solid var(--gold);padding-left:36px;margin-bottom:16px
+}
+.stakes-attribution{font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);letter-spacing:0.08em;padding-left:36px;margin-bottom:64px}
+.stakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.stakes-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:28px 24px}
+.stakes-icon{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--gold);font-style:italic;margin-bottom:14px;font-weight:300}
+.stakes-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--t1);margin-bottom:10px;font-weight:400}
+.stakes-text{font-size:13px;color:var(--t2);line-height:1.8}
+
+/* BEST OF THE WEEK */
+.botw{
+  padding:100px 48px;background:var(--bg2);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border)
+}
+.botw-inner{max-width:960px;margin:0 auto}
+.botw-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:16px}
+.botw-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4.5vw,52px);font-weight:300;line-height:1.2
+}
+.botw-sub{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.1em;text-align:right;line-height:1.8;max-width:200px}
+.botw-featured{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:10px;padding:40px;margin-bottom:24px;
+  border-left:3px solid var(--gold)
+}
+.botw-week{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px}
+.botw-story{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.5vw,24px);
+  font-weight:300;font-style:italic;color:var(--t1);line-height:1.65;margin-bottom:24px
+}
+.botw-principle{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:10px;color:var(--green2);
+  background:rgba(74,124,94,0.1);border:1px solid rgba(106,170,132,0.2);
+  border-radius:20px;padding:5px 14px;letter-spacing:0.08em
+}
+.botw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.botw-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:22px}
+.botw-card-week{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px}
+.botw-card-story{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--t2);line-height:1.7;margin-bottom:12px}
+.botw-card-tag{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.08em}
+
+/* PRINCIPLES */
+.principles{padding:100px 48px;border-top:1px solid var(--border)}
+.principles-inner{max-width:960px;margin:0 auto}
+.principles-intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:64px}
+.principles-intro h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,52px);font-weight:300;line-height:1.2}
+.principles-intro p{font-size:15px;color:var(--t2);line-height:1.85;padding-top:8px}
+.principles-intro p strong{color:var(--t1);font-weight:400}
+.p-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.p-item{background:var(--bg);padding:24px 28px;transition:background .15s;cursor:default}
+.p-item:hover{background:var(--surface)}
+.p-num{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.12em;margin-bottom:8px}
+.p-text{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--t1);line-height:1.4;margin-bottom:6px}
+.p-source{font-family:'DM Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:0.07em}
+
+/* RESEARCH */
+.research{padding:100px 48px;background:var(--bg2);border-top:1px solid var(--border)}
+.research-inner{max-width:960px;margin:0 auto}
+.research-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:48px}
+.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.r-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:28px 24px}
+.r-initial{
+  font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;
+  font-style:italic;color:var(--gold);line-height:1;margin-bottom:16px
+}
+.r-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--t1);margin-bottom:4px;font-weight:400}
+.r-inst{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.09em;margin-bottom:16px;line-height:1.7}
+.r-finding{font-size:13px;color:var(--t2);line-height:1.8}
+.r-book{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);font-style:italic;margin-top:14px;line-height:1.6;padding-top:14px;border-top:1px solid var(--border)}
+
+/* MANIFESTO */
+.manifesto{
+  padding:120px 48px;border-top:1px solid var(--border);
+  text-align:center
+}
+.manifesto-inner{max-width:720px;margin:0 auto}
+.manifesto-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:40px}
+.manifesto h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4.5vw,54px);font-weight:300;font-style:italic;
+  line-height:1.4;color:var(--t1);margin-bottom:32px
+}
+.manifesto-lines{list-style:none;margin-bottom:48px}
+.manifesto-lines li{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,2.5vw,24px);font-weight:300;
+  color:var(--t2);line-height:2;letter-spacing:0.01em;
+  transition:color .2s
+}
+.manifesto-lines li:hover{color:var(--t1)}
+.manifesto-lines li span{color:var(--gold);font-style:italic}
+.manifesto-cta{font-size:15px;color:var(--t2);line-height:1.8;margin-bottom:40px}
+
+/* FINAL CTA */
+.final-cta{
+  padding:140px 48px;border-top:1px solid var(--border);
+  background:var(--bg2);text-align:center
+}
+.final-inner{max-width:800px;margin:0 auto}
+.final-cta h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,7vw,88px);font-weight:300;
+  line-height:1.05;letter-spacing:-0.02em;color:var(--t1);margin-bottom:24px
+}
+.final-cta h2 em{font-style:italic;color:var(--gold)}
+.final-cta p{font-size:17px;color:var(--t2);max-width:500px;margin:0 auto 48px;line-height:1.85}
+.final-free{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.12em;text-transform:uppercase;margin-top:20px}
+
+/* SHARE */
+.share-bar{
+  padding:56px 48px;border-top:1px solid var(--border);
+  background:var(--surface);text-align:center
+}
+.share-bar p{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px}
+.share-bar-sub{font-size:14px;color:var(--t2);margin-bottom:28px;font-style:italic}
+.share-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.share-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:10px;color:var(--t2);
+  border:1px solid var(--border);border-radius:3px;padding:10px 20px;
+  text-decoration:none;letter-spacing:0.09em;text-transform:uppercase;
+  transition:all .15s;cursor:pointer;background:none
+}
+.share-btn:hover{border-color:var(--t2);color:var(--t1)}
+.share-btn.gold{border-color:rgba(184,150,90,0.3);color:var(--gold)}
+.share-btn.gold:hover{border-color:var(--gold);color:var(--gold2)}
+
+/* FOOTER */
+footer{
+  padding:44px 48px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px
+}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--t1)}
+.footer-logo span{color:var(--gold);font-style:italic}
+.footer-right{font-family:'DM Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:0.08em;line-height:1.9;text-align:right}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:720px){
+  nav{padding:16px 20px}
+  .nav-right .nav-link{display:none}
+  .hero,.brand-story,.stakes,.botw,.principles,.research,.manifesto,.final-cta,.share-bar{padding-left:20px;padding-right:20px}
+  footer{padding:32px 20px}
+  .yoda-grid,.stakes-grid,.research-grid,.botw-grid,.principles-intro{grid-template-columns:1fr;gap:32px}
+  .p-grid{grid-template-columns:1fr}
+  .hero-stats{gap:28px}
+  .principles-intro p{padding-top:0}
+  .footer-right{text-align:left}
+  .botw-header p{display:none}
 }
