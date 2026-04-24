@@ -89,8 +89,8 @@ export default function KidDashboard() {
       ) : (
         <div>
           <div style={{ marginBottom: '48px' }}>
-            <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '48px', fontWeight: 300, color: 'var(--t1)', marginBottom: '16px' }}>Dad is Working.</h1>
-            <p style={{ color: 'var(--t2)', fontSize: '18px' }}>He is currently trying to build a better relationship with you. How did he do this week?</p>
+            <h1 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '48px', fontWeight: 300, color: 'var(--t1)', marginBottom: '16px' }}>Dad is on a mission.</h1>
+            <p style={{ color: 'var(--t2)', fontSize: '18px' }}>He is actively trying to level up his relationship with you. How did he do this week?</p>
           </div>
 
           <div style={{ background: 'var(--surface)', padding: '32px', borderRadius: '8px', border: '1px solid var(--border)' }}>
