@@ -10,6 +10,7 @@ export default function KidDashboard() {
   const [paired, setPaired] = useState(false);
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState('');
+  const [didAction, setDidAction] = useState<boolean | null>(null);
   const [statusMsg, setStatusMsg] = useState('');
   const [isSending, setIsSending] = useState(false);
 
@@ -49,6 +50,7 @@ export default function KidDashboard() {
     // Push the comment securely to the Dad's dashboard
     await addDoc(collection(db, `pairings/${code}/feedback`), {
       rating,
+      didAction,
       comment: audit.filteredText,
       safe: audit.safe,
       auditReason: audit.reason || "Passed",
@@ -94,6 +96,17 @@ export default function KidDashboard() {
           </div>
 
           <div style={{ background: 'var(--surface)', padding: '32px', borderRadius: '8px', border: '1px solid var(--border)' }}>
+            
+            <div style={{ marginBottom: '32px', padding: '24px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px' }}>
+              <p style={{ color: 'var(--t1)', fontSize: '20px', marginBottom: '16px', fontFamily: '"Cormorant Garamond", serif', fontWeight: 500 }}>
+                Dad is actively checking accountability boxes in his portal this week.<br/><br/><strong style={{color: 'var(--gold)'}}>Can you actually feel a concrete difference?</strong>
+              </p>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                 <button onClick={() => setDidAction(true)} style={{ flex: 1, padding: '16px', background: didAction === true ? 'var(--gold)' : 'transparent', color: didAction === true ? '#000' : 'var(--t1)', border: '1px solid var(--gold)', borderRadius: '24px', fontWeight: 600, transition: 'all 0.2s', cursor: 'pointer' }}>Yes, definitely</button>
+                 <button onClick={() => setDidAction(false)} style={{ flex: 1, padding: '16px', background: didAction === false ? '#222' : 'transparent', color: didAction === false ? '#fff' : 'var(--t1)', border: '1px solid var(--border)', borderRadius: '24px', transition: 'all 0.2s', cursor: 'pointer' }}>Not really</button>
+              </div>
+            </div>
+
             <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '28px', color: 'var(--gold)', fontWeight: 300, marginBottom: '16px' }}>Rate This Week</h2>
             <div style={{ display: 'flex', gap: '8px', marginBottom: '32px' }}>
               {[1, 2, 3, 4, 5].map(star => (
